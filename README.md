@@ -1,6 +1,6 @@
 # Proyecto react prueba tecnica 
 
-Proyecto realizado para la implementacion de prueba tecnica. Esta prueba de programación se implementa utilizando HTML, JavaScript y CSS con framework para Front End Reac js v18
+Proyecto realizado para la implementacion de prueba tecnica. Esta prueba se utilizando HTML, JavaScript y CSS con framework para Front End Reac js v18
 
 algún 
 
@@ -27,6 +27,8 @@ _Una serie de ejemplos paso a paso que te dice lo que debes ejecutar para tener 
 _Dí cómo será ese paso_
 
 ```
+git clone url del repositorio
+cd nombreCarpeta
 npm install
 npm run dev 
 ```
