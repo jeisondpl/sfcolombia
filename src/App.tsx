@@ -1,7 +1,7 @@
 import { useEffect, useRef, useState } from 'react'
 import axios, { AxiosError } from 'axios'
 import NavBar from './components/NavBar'
-import { Button, ButtonGroup, Grid } from '@mui/material'
+import { Button, ButtonGroup, CircularProgress, Grid } from '@mui/material'
 import CardItems from './components/CardItems'
 import ModalDetalles from './components/ModalDetalles'
 
@@ -26,6 +26,7 @@ interface data {
 
 const App = () => {
   const [data, setData] = useState<items[]>()
+  const [dataPage, setDataPage] = useState<data>()
   const [loading, setLoading] = useState<boolean>(false)
   const [error, setError] = useState<AxiosError>()
   const [input, setinput] = useState('')
@@ -48,9 +49,10 @@ const App = () => {
         },
       })
       const data: data = dataAxios.data
+      console.log(data)
+      setDataPage(data)
       const { items } = data
       setData(items)
-      page.current++
     } catch (error: any) {
       const err: AxiosError = error
       setError(err)
@@ -72,10 +74,12 @@ const App = () => {
 
   const handleNext = () => {
     getData(size, page.current)
+    page.current++
   }
 
   const handleCPrev = () => {
     getData(size, page.current)
+    page.current--
   }
 
   const handleNumberSize = (e: any) => {
@@ -98,9 +102,10 @@ const App = () => {
     <Grid container rowSpacing={1} columnSpacing={{ xs: 1, sm: 2, md: 3 }}>
       <Grid item xs={12}>
         <NavBar onSearch={handleInput} handleClick={handleNumberSize} />
-        <p className='read-the-docs'>Numero registros :{size}</p>
-        {loading && <div>Loading...</div>}
+        <h1 className='read-the-docs'>Numero registros :{size}</h1>
+        {loading && <CircularProgress color='success' />}
         {error && <div>Error: {error.message}</div>}
+        <h1>{page.current}</h1>
         <ButtonGroup variant='contained' aria-label='outlined primary button group'>
           <Button onClick={handleCPrev}>prev page</Button>
           <Button onClick={handleNext}>next page</Button>
@@ -108,7 +113,7 @@ const App = () => {
       </Grid>
       {data &&
         data.map((hero: items) => (
-          <Grid item md={3} xs={12}>
+          <Grid item md={3} xs={6}>
             <CardItems id={hero.id} image={hero.images.md} title={hero.name} handDetails={handDetail} />
           </Grid>
         ))}
