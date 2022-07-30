@@ -1,13 +1,16 @@
-import React, { useEffect, useRef, useState } from 'react'
-import reactLogo from './assets/react.svg'
-import './App.css'
+import { useEffect, useRef, useState } from 'react'
 import axios, { AxiosError } from 'axios'
+import NavBar from './components/NavBar'
+import { Button, ButtonGroup, Grid } from '@mui/material'
+import CardItems from './components/CardItems'
+import ModalDetalles from './components/ModalDetalles'
 
 interface items {
   id: number
   images: {
     md: string
   }
+  name: string
 }
 
 interface data {
@@ -27,6 +30,11 @@ const App = () => {
   const [error, setError] = useState<AxiosError>()
   const [input, setinput] = useState('')
   const [size, setSize] = useState(10)
+  const [open, setOpen] = useState(false)
+  const [hero, setHero] = useState<number>()
+
+  const handleOpen = () => setOpen(true)
+  const handleClose = () => setOpen(false)
 
   const page = useRef<number>(1)
 
@@ -70,39 +78,42 @@ const App = () => {
     getData(size, page.current)
   }
 
-  const handleNumberSize = () => {
+  const handleNumberSize = (e: any) => {
+    e.preventDefault()
     if (input) {
       setSize(parseInt(input))
       page.current = 1
     }
   }
+  const handleInput = (e: string) => {
+    setinput(e)
+  }
+
+  const handDetail = (id: number) => {
+    setHero(id)
+    handleOpen()
+  }
 
   return (
-    <div className='App'>
-      <div>
-        <a href='https://reactjs.org' target='_blank'>
-          <img src={reactLogo} className='logo react' alt='React logo' />
-        </a>
-      </div>
-      <input type='text' placeholder='numero de registros' onChange={(e) => setinput(e.target.value)} value={input} />
-      <p className='read-the-docs'>Numero registros :{size}</p>
-
-      {loading && <div>Loading...</div>}
-      {error && <div>Error: {error.message}</div>}
-
-      <div className='card'>
-        <button onClick={handleNumberSize}>Numero de registros</button>
-        <button onClick={handleNext}>next page</button>
-        <button onClick={handleCPrev}>prev page</button>
-        {data &&
-          data.map((item: items) => (
-            <div key={item.id}>
-              <img src={item.images.md} alt='hero' />
-            </div>
-          ))}
-      </div>
-      <p className='read-the-docs'>Click on the Vite and React logos to learn more</p>
-    </div>
+    <Grid container rowSpacing={1} columnSpacing={{ xs: 1, sm: 2, md: 3 }}>
+      <Grid item xs={12}>
+        <NavBar onSearch={handleInput} handleClick={handleNumberSize} />
+        <p className='read-the-docs'>Numero registros :{size}</p>
+        {loading && <div>Loading...</div>}
+        {error && <div>Error: {error.message}</div>}
+        <ButtonGroup variant='contained' aria-label='outlined primary button group'>
+          <Button onClick={handleCPrev}>prev page</Button>
+          <Button onClick={handleNext}>next page</Button>
+        </ButtonGroup>
+      </Grid>
+      {data &&
+        data.map((hero: items) => (
+          <Grid item md={3} xs={12}>
+            <CardItems id={hero.id} image={hero.images.md} title={hero.name} handDetails={handDetail} />
+          </Grid>
+        ))}
+      {hero && <ModalDetalles handleOpen={handleOpen} handleClose={handleClose} open={open} idHero={hero} />}
+    </Grid>
   )
 }
 
