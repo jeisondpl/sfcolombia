@@ -38,9 +38,6 @@ _Finaliza con un ejemplo de cómo obtener datos del sistema o como usarlos para 
 
 ## Ejecutando las pruebas ⚙️
 
-_Explica como ejecutar las pruebas automatizadas para este sistema_
-
-### Analice las pruebas end-to-end 🔩
 En este proyecto desafortunadamente
 Cómo se pronuncia no se aplican pruebas unitaria de la biblioteca Jest para ejecución de pruebas que permite acceder al DOM mediante jsdom. por el tiempo limitado en el desarrollo de la solucio. pero es importante tener en centa que para la calidad del desarrollo se necesita de implementar typeScritps y pruebas unitaria en la creacio de componentes.
 
