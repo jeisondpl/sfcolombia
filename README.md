@@ -68,9 +68,9 @@ puede encontar con que fue construido el proyecto pata la obtener el objetivo de
 
 ## Versionado 📌
 
-Usamos React biblioteca Javascript de código abierto diseñada para crear interfaces de usuario  [SemVer](https://es.reactjs.org/) link de documentacion
-Usamos vite para la creacion del proyecto  [SemVer](https://vitejs.dev/) link de documentacion
-Usamos visual code para codificar el proyecto [SemVer](https://code.visualstudio.com/) link de documentacion
-Usamos javaScripts  [SemVer](https://developer.mozilla.org/es/docs/Web/JavaScript) link de documentacion
-Usamos material ui para el diseño response del proyecto  [SemVer](https://mui.com/) link de documentacion
-Usamos axiospara hacer peticiones rest  [SemVer](https://axios-http.com/docs/intro) link de documentacion
+Usamos React biblioteca Javascript de código abierto diseñada para crear interfaces de usuario  [ir Documentacion](https://es.reactjs.org/) link de documentacion
+Usamos vite para la creacion del proyecto  [ir Documentacion](https://vitejs.dev/) link de documentacion
+Usamos visual code para codificar el proyecto [ir Documentacion](https://code.visualstudio.com/) link de documentacion
+Usamos javaScripts  [ir Documentacion](https://developer.mozilla.org/es/docs/Web/JavaScript) link de documentacion
+Usamos material ui para el diseño response del proyecto  [ir Documentacion](https://mui.com/) link de documentacion
+Usamos axiospara hacer peticiones rest  [ir Documentacion](https://axios-http.com/docs/intro) link de documentacion
