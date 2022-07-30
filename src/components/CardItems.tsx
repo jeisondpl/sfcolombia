@@ -11,15 +11,19 @@ interface Props {
   title?: string
   handDetails: (e: number) => void
   titleButton?: string
+  detail?: string
 }
 
-export default function MediaCard({ id, title, image, handDetails, titleButton = 'Ver' }: Props) {
+export default function MediaCard({ id, title, image, handDetails, titleButton = 'Ver', detail }: Props) {
   return (
     <Card sx={{ maxWidth: 345 }}>
       <CardMedia component='img' height='500' image={image} alt='green iguana' />
       <CardContent>
-        <Typography gutterBottom variant='h5' component='div'>
-          <h2>{title}</h2>
+        <Typography gutterBottom variant='h4' component='div'>
+          {title}
+        </Typography>
+        <Typography gutterBottom variant='h6' component='div'>
+          {detail}
         </Typography>
       </CardContent>
       <CardActions>

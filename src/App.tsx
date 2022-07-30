@@ -35,7 +35,10 @@ const App = () => {
   const [hero, setHero] = useState<number>()
 
   const handleOpen = () => setOpen(true)
-  const handleClose = () => setOpen(false)
+  const handleClose = () => {
+    setOpen(false)
+    setHero(undefined)
+  }
 
   const page = useRef<number>(1)
 
@@ -87,6 +90,7 @@ const App = () => {
     if (input) {
       setSize(parseInt(input))
       page.current = 1
+      setinput('')
     }
   }
   const handleInput = (e: string) => {
@@ -99,13 +103,13 @@ const App = () => {
   }
 
   return (
-    <Grid container rowSpacing={1} columnSpacing={{ xs: 1, sm: 2, md: 3 }}>
+    <Grid container rowSpacing={2}>
       <Grid item xs={12}>
         <NavBar onSearch={handleInput} handleClick={handleNumberSize} />
         <h1 className='read-the-docs'>Numero registros :{size}</h1>
         {loading && <CircularProgress color='success' />}
         {error && <div>Error: {error.message}</div>}
-        <h1>{page.current}</h1>
+        <h1>Page:{page.current}</h1>
         <ButtonGroup variant='contained' aria-label='outlined primary button group'>
           <Button onClick={handleCPrev}>prev page</Button>
           <Button onClick={handleNext}>next page</Button>
@@ -113,7 +117,7 @@ const App = () => {
       </Grid>
       {data &&
         data.map((hero: items) => (
-          <Grid item md={3} xs={6}>
+          <Grid item md={2} xs={6} rowSpacing={3}>
             <CardItems id={hero.id} image={hero.images.md} title={hero.name} handDetails={handDetail} />
           </Grid>
         ))}

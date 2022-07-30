@@ -6,6 +6,7 @@ import Modal from '@mui/material/Modal'
 import axios, { AxiosError } from 'axios'
 import { useEffect, useState } from 'react'
 import CardItems from './CardItems'
+import { CircularProgress } from '@mui/material'
 
 const style = {
   position: 'absolute' as 'absolute',
@@ -41,8 +42,10 @@ interface dataDetalil {
 
 export default function BasicModal({ open, handleOpen, handleClose, idHero }: Props) {
   const [detail, setdetail] = useState<dataDetalil>()
+  const [loading, setLoading] = useState<boolean>(false)
 
   const getDetail = async (id: number) => {
+    setLoading(true)
     try {
       const dataAxios = await axios.get('https://ea1w717ym2.execute-api.us-east-1.amazonaws.com/api/hero', {
         params: {
@@ -55,6 +58,7 @@ export default function BasicModal({ open, handleOpen, handleClose, idHero }: Pr
       const err: AxiosError = error
       console.log(err)
     } finally {
+      setLoading(false)
     }
   }
 
@@ -63,20 +67,17 @@ export default function BasicModal({ open, handleOpen, handleClose, idHero }: Pr
   }, [idHero])
 
   return (
-    <div>
-      <Modal open={open} onClose={handleClose} aria-labelledby='modal-modal-title' aria-describedby='modal-modal-description'>
-        <Box sx={style}>
-          <div style={{ display: 'flex', flexDirection: 'column', justifyContent: 'center' }}>
-            <Typography id='modal-modal-title' variant='h6' component='h2'>
-              <h2>{detail?.biography.firstAppearance}</h2>
-            </Typography>
-            <Typography id='modal-modal-description' sx={{ mt: 2 }}>
-              <h2>{detail?.biography.publisher}</h2>
-            </Typography>
-            {detail && <CardItems id={detail.id} image={detail.images.md} title={detail.name} handDetails={handleClose} titleButton={'Cerrar'} />}
-          </div>
-        </Box>
-      </Modal>
-    </div>
+    <Modal open={open} onClose={handleClose} aria-labelledby='modal-modal-title' aria-describedby='modal-modal-description'>
+      <Box sx={style}>
+        <Typography id='modal-modal-title' variant='h6' component='h2'>
+          <h2>{detail?.biography.firstAppearance}</h2>
+        </Typography>
+      
+        <div style={{ display: 'flex', flexDirection: 'column', justifyContent: 'center', alignItems: 'center' }}>
+          {loading && <CircularProgress color='success' />}
+          {detail && <CardItems id={detail.id} image={detail.images.md} title={detail.name} handDetails={handleClose} titleButton={'Cerrar'} detail={detail?.biography.publisher} />}
+        </div>
+      </Box>
+    </Modal>
   )
 }
