@@ -2,7 +2,6 @@
 
 Proyecto realizado para la implementacion de prueba tecnica. Esta prueba se utilizando HTML, JavaScript y CSS con framework para Front End Reac js v18
 
-algún 
 
 ## Comenzando 🚀
 
