@@ -41,14 +41,11 @@ _Finaliza con un ejemplo de cómo obtener datos del sistema o como usarlos para 
 En este proyecto desafortunadamente
 Cómo se pronuncia no se aplican pruebas unitaria de la biblioteca Jest para ejecución de pruebas que permite acceder al DOM mediante jsdom. por el tiempo limitado en el desarrollo de la solucio. pero es importante tener en centa que para la calidad del desarrollo se necesita de implementar typeScritps y pruebas unitaria en la creacio de componentes.
 
-``` 
-Da un ejemplo
-``` 
 
-### Y las pruebas de estilo de codificación ⌨️
+### Implementacion framework para el estilado response ⌨️
 
 _Explica que verifican estas pruebas y por qué_
-
+Tener en cuenta que el apartado de instalacion al ejecutar npm i ya se instala estas dependencias 
 ```
 npm install @mui/material @emotion/react @emotion/styled
 npm install @mui/icons-material
@@ -56,7 +53,7 @@ npm install @mui/icons-material
 
 ## Despliegue 📦
 
-el despliegue de la aplicacion no se entrega en plataforma con dominio asignado por la naturaleza objetiva de la prueba tecnica la cual no exige el despliegue en servidor nube o local.
+El despliegue de la aplicacion no se entrega en plataforma con dominio asignado por la naturaleza objetiva de la prueba tecnica la cual no exige el despliegue en servidor nube o local.
 
 ## Construido con 🛠️
 
@@ -67,8 +64,13 @@ npm run build
 
 ## Wiki 📖
 
-puede encontar con que fue construido el proyecto react pata la obtener el objetivo de la prueba en:
+puede encontar con que fue construido el proyecto pata la obtener el objetivo de la prueba en:
 
 ## Versionado 📌
 
-Usamos [SemVer](https://github.com/jeisondpl/sfcolombia/edit/main/README.md) puede clonar el proyecto en esta url
+Usamos React biblioteca Javascript de código abierto diseñada para crear interfaces de usuario  [SemVer](https://es.reactjs.org/) link de documentacion
+Usamos vite para la creacion del proyecto  [SemVer](https://vitejs.dev/) link de documentacion
+Usamos visual code para codificar el proyecto [SemVer](https://code.visualstudio.com/) link de documentacion
+Usamos javaScripts  [SemVer](https://developer.mozilla.org/es/docs/Web/JavaScript) link de documentacion
+Usamos material ui para el diseño response del proyecto  [SemVer](https://mui.com/) link de documentacion
+Usamos axiospara hacer peticiones rest  [SemVer](https://axios-http.com/docs/intro) link de documentacion
